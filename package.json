@@ -1,6 +1,6 @@
 {
     "name": "sgcconsole",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "index.js",
     "description": "sgcConsole logs commands to the console in a structured way such that it is easy to debug code. Sections (or functions) are used to create a console log that looks like an executed piece of 'sudo code'.",
     "scripts": {
