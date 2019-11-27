@@ -1,22 +1,30 @@
 {
-  "name": "sgcConsole",
-  "version": "1.0.0",
-  "main": "index.js",
-  "description": "sgcConsole logs commands to the console in a structured way such that it is easy to debug code. Sections (or functions) are used to create a console log that looks like an executed piece of 'sudo code'.",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SGCMarketing/sgcConsole.git"
-  },
-  "keywords": [
-    "sgcLog"
-  ],
-  "author": "SGC Marketing Ltd",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SGCMarketing/sgcLog/issues"
-  },
-  "homepage": "https://github.com/SGCMarketing/sgcLog#readme"
+    "name": "sgcconsole",
+    "version": "1.0.1",
+    "main": "index.js",
+    "description": "sgcConsole logs commands to the console in a structured way such that it is easy to debug code. Sections (or functions) are used to create a console log that looks like an executed piece of 'sudo code'.",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SGCMarketing/sgcConsole.git"
+    },
+    "keywords": [
+        "sgcLog"
+    ],
+    "author": "SGC Marketing Ltd",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/SGCMarketing/sgcLog/issues"
+    },
+    "homepage": "https://github.com/SGCMarketing/sgcLog#readme",
+    "prettier": {
+        "trailingComma": "none",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true,
+        "printWidth": 300,
+        "jsxSingleQuote": true
+    }
 }
