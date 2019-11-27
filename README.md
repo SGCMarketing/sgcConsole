@@ -2,6 +2,8 @@
 
 sgcConsole logs commands to the console in a structured way such that it is easy to debug code. Sections (or functions) are used to create a console log that looks like an executed piece of 'sudo code'.
 
+Note that in order for the colours to work, you must have a console/terminal that supports colours. By default both bash and zsh do. Developed and tested on a Mac, but should work fine on Windows and Unix.
+
 # Installation
 
 sgcConsole can be installed from the CLI using:
@@ -93,3 +95,7 @@ sgcConsole.closeFunction()
 sgcConsole.lineBreakToConsole()
 sgcConsole.newlineToConsole(10)
 ```
+
+# Support
+
+This package is under active development as we use it in our own products. If you experience any difficulties, please email hello@sgcmarketing.co.uk and we'll get back to you as soon as possible.
