@@ -163,6 +163,10 @@ function lineBreakToConsole() {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function newlineToConsole(numberOfLines) {
     //
+    if (typeof numberOfLines === 'undefined' || numberOfLines <= 0) {
+        numberOfLines = 1
+    }
+
     for (var ctr = 0; ctr < numberOfLines; ctr++) {
         console.log('')
     }
@@ -177,9 +181,7 @@ function newlineToConsole(numberOfLines) {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function _formatMessage(message, callingFile, isFunction) {
     //
-    const functionMessageLength = 20
-    const dateTimeNow = new Date()
-    const formattedTime = `${('0' + dateTimeNow.getHours()).slice(-2)}:${('0' + dateTimeNow.getMinutes()).slice(-2)}:${('0' + dateTimeNow.getSeconds()).slice(-2)}.${('000' + dateTimeNow.getMilliseconds()).slice(-3)}`
+    const functionMessageLength = 14
 
     callingFile = '\x1b[35m' + `${' '.repeat(functionMessageLength)} ${callingFile}`.slice(-functionMessageLength) + '\x1b[0m'
 
