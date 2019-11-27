@@ -1,1 +1,2 @@
 # sgcLog
+# sgcConsole
