@@ -43,15 +43,13 @@ const spacesPerTab = 4
 function errorToConsoleAndClose(error) {
     //
 
-    if (process.env.LOGGING_ENABLED === 'true') {
-        var spaces = ''
-        if (loggingLevel > -1) {
-            spaces = ' '.repeat(loggingLevel * spacesPerTab + spacesPerTab)
-        }
-        console.log(_formatMessage(spaces + `THROW :(${error.message}`, functionNames[loggingLevel]))
-        console.log(_formatMessage(spaces + `:(${error.stack}`, functionNames[loggingLevel]))
-        closeFunction()
+    var spaces = ''
+    if (loggingLevel > -1) {
+        spaces = ' '.repeat(loggingLevel * spacesPerTab + spacesPerTab)
     }
+    console.log(_formatMessage(spaces + `THROW :(${error.message}`, functionNames[loggingLevel]))
+    console.log(_formatMessage(spaces + `:(${error.stack}`, functionNames[loggingLevel]))
+    closeFunction()
 
     throw { code: 1, message: error.message }
 }
@@ -66,10 +64,6 @@ function errorToConsoleAndClose(error) {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function messageToConsole(message) {
     //
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     var spaces = ''
     if (loggingLevel > -1) {
         spaces = ' '.repeat(loggingLevel * spacesPerTab + spacesPerTab)
@@ -87,10 +81,6 @@ function messageToConsole(message) {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function messageToConsoleAndClose(message) {
     //
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     var spaces = ''
     if (loggingLevel > -1) {
         spaces = ' '.repeat(loggingLevel * spacesPerTab + spacesPerTab)
@@ -106,10 +96,6 @@ function messageToConsoleAndClose(message) {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function closeFunctionFull() {
     //
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     var ctr = loggingLevel
     while (ctr > -1) {
         closeFunction()
@@ -124,10 +110,6 @@ function closeFunctionFull() {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function closeFunction() {
     //
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     var spaces = ''
     if (loggingLevel > 0) {
         spaces = ' '.repeat(loggingLevel * spacesPerTab)
@@ -148,10 +130,6 @@ function closeFunction() {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function openFunction(message, callingFunction) {
     //
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     functionNames.push(callingFunction)
     loggingLevel++
 
@@ -171,10 +149,6 @@ function openFunction(message, callingFunction) {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function lineBreakToConsole() {
     //
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     const numberOfCharactersInLine = 86
     // Character codes set colour to yellow and then reset
     console.log('\x1b[33m' + '-'.repeat(numberOfCharactersInLine) + '-\x1b[0m')
@@ -189,11 +163,6 @@ function lineBreakToConsole() {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function newlineToConsole(numberOfLines) {
     //
-
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     for (var ctr = 0; ctr < numberOfLines; ctr++) {
         console.log('')
     }
@@ -208,17 +177,12 @@ function newlineToConsole(numberOfLines) {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function _formatMessage(message, callingFile, isFunction) {
     //
-    if (process.env.LOGGING_ENABLED !== 'true') {
-        return
-    }
-
     const functionMessageLength = 20
-
     const dateTimeNow = new Date()
     const formattedTime = `${('0' + dateTimeNow.getHours()).slice(-2)}:${('0' + dateTimeNow.getMinutes()).slice(-2)}:${('0' + dateTimeNow.getSeconds()).slice(-2)}.${('000' + dateTimeNow.getMilliseconds()).slice(-3)}`
 
     callingFile = '\x1b[35m' + `${' '.repeat(functionMessageLength)} ${callingFile}`.slice(-functionMessageLength) + '\x1b[0m'
-    //
+
     if (isFunction === true || message.replace(/\./g, ' ').trim() === '}') {
         // Colour openFunctions
         message = `\x1b[36m${message}\x1b[0m`
