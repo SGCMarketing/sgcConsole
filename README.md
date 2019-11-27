@@ -32,6 +32,10 @@ sgcConsole.messageToConsole(`This is a test message.`)
 sgcConsole.closeFunction()
 ```
 
+This produces the following output:
+
+![Example 1](https://github.com/SGCMarketing/sgcConsole/raw/master/screenshots/example1.png 'Example 1')
+
 ## Sub-functions
 
 Functions can be cascaded by simply opening a new function before closing the previous function.
@@ -58,6 +62,10 @@ sgcConsole.messageToConsoleAndClose(`Nothing to see here.`)
 sgcConsole.closeFunction()
 sgcConsole.lineBreakToConsole()
 ```
+
+This produces the following output:
+
+![Example 2](https://github.com/SGCMarketing/sgcConsole/raw/master/screenshots/example2.png 'Example 2')
 
 ## Smiley's
 
