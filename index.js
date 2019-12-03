@@ -28,7 +28,7 @@ class Log {
     errorToConsoleAndClose(error) {
         //
         if (this.loggingEnabled !== 'true') {
-            return
+            throw { code: 1, message: error.message }
         }
 
         var spaces = ''
