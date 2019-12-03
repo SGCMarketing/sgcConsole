@@ -35,7 +35,7 @@ class Log {
         if (loggingLevel > -1) {
             spaces = ' '.repeat(loggingLevel * this.spacesPerTab + this.spacesPerTab)
         }
-        console.log(_formatMessfddfage(spaces + `THROW :(${error.message}`, functionNames[loggingLevel]))
+        console.log(_formatMessage(spaces + `THROW :(${error.message}`, functionNames[loggingLevel]))
         console.log(_formatMessage(spaces + `:(${error.stack}`, functionNames[loggingLevel]))
         this.closeFunction()
 
