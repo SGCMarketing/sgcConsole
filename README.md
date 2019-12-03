@@ -1,5 +1,7 @@
 sgcConsole logs commands to the console in a structured way such that it is easy to debug code. Sections (or functions) are used to create a console log that looks like an executed piece of 'sudo code'.
 
+From version 1.0.10, sgcConsole is now implemented as a class, requiring initialisation using the `new` keyword.
+
 Note that in order for the colours to work, you must have a console/terminal that supports colours. By default both bash and zsh do. Developed and tested on a Mac, but should work fine on Windows and Unix.
 
 [![Build Status](https://api.travis-ci.org/tj/sgcconsole.js.svg?branch=master)](http://travis-ci.org/tj/sgcconsole.js)
@@ -21,15 +23,16 @@ Once installed, sgcConsole needs to be included within your project as follows:
 
 ```js
 const sgcConsole = require('sgcconsole')
+const Log = new sgcConsole()
 ```
 
 Typically, you will want to start with opening a 'function' and then issue one or more messages before closing it:
 
 ```js
 // Start a new function and log a message
-sgcConsole.openFunction(`testFunction()`, `index`)
-sgcConsole.messageToConsole(`This is a test message.`)
-sgcConsole.closeFunction()
+Log.openFunction(`testFunction()`, `index`)
+Log.messageToConsole(`This is a test message.`)
+Log.closeFunction()
 ```
 
 This produces the following output:
@@ -41,26 +44,24 @@ This produces the following output:
 Functions can be cascaded by simply opening a new function before closing the previous function.
 
 ```js
-const sgcConsole = require('sgcconsole')
-
 const testValue = 123
 
 // Start a new function
-sgcConsole.lineBreakToConsole()
-sgcConsole.openFunction(`testFunction()`, `index`)
+Log.lineBreakToConsole()
+Log.openFunction(`testFunction()`, `index`)
 
-sgcConsole.messageToConsole(`We might log a value, like '${testValue}'.`)
-sgcConsole.messageToConsole(`:)This is a good message.`)
-sgcConsole.messageToConsole(`:(This is a bad message.`)
+Log.messageToConsole(`We might log a value, like '${testValue}'.`)
+Log.messageToConsole(`:)This is a good message.`)
+Log.messageToConsole(`:(This is a bad message.`)
 
 // Start a sub-function and close with a message
-sgcConsole.newlineToConsole()
-sgcConsole.openFunction(`subFunction()`, `index`)
-sgcConsole.messageToConsoleAndClose(`Nothing to see here.`)
+Log.newlineToConsole()
+Log.openFunction(`subFunction()`, `index`)
+Log.messageToConsoleAndClose(`Nothing to see here.`)
 
 // Close the function
-sgcConsole.closeFunction()
-sgcConsole.lineBreakToConsole()
+Log.closeFunction()
+Log.lineBreakToConsole()
 ```
 
 This produces the following output:
@@ -72,10 +73,10 @@ This produces the following output:
 If you wish to show messages in green or red so that they stand-out, simply place a :) (smiley face) for green text or :( (sad face) for red text:
 
 ```js
-sgcConsole.openFunction(`testFunction()`, `index`)
-sgcConsole.messageToConsole(`:)This is a good message.`)
-sgcConsole.messageToConsole(`:(This is a bad message.`)
-sgcConsole.closeFunction()
+Log.openFunction(`testFunction()`, `index`)
+Log.messageToConsole(`:)This is a good message.`)
+Log.messageToConsole(`:(This is a bad message.`)
+Log.closeFunction()
 ```
 
 ## Line breaks
@@ -83,11 +84,11 @@ sgcConsole.closeFunction()
 To help separate sections of code, you can include a line break, which will insert a fixed number of characters in a yellow line to the screen:
 
 ```js
-sgcConsole.lineBreakToConsole()
-sgcConsole.openFunction(`testFunction()`, `index`)
-sgcConsole.messageToConsole(`This is a test message.`)
-sgcConsole.closeFunction()
-sgcConsole.lineBreakToConsole()
+Log.lineBreakToConsole()
+Log.openFunction(`testFunction()`, `index`)
+Log.messageToConsole(`This is a test message.`)
+Log.closeFunction()
+Log.lineBreakToConsole()
 ```
 
 ## New line
@@ -95,13 +96,13 @@ sgcConsole.lineBreakToConsole()
 You can additionally add one or more blank lines by using the newlineToConsole call, which takes the number of lines you wish to insert as a parameter. If no parameter is specified then it defaults to 1.
 
 ```js
-sgcConsole.newlineToConsole()
-sgcConsole.lineBreakToConsole()
-sgcConsole.openFunction(`testFunction()`, `index`)
-sgcConsole.messageToConsole(`This is a test message.`)
-sgcConsole.closeFunction()
-sgcConsole.lineBreakToConsole()
-sgcConsole.newlineToConsole(10)
+Log.newlineToConsole()
+Log.lineBreakToConsole()
+Log.openFunction(`testFunction()`, `index`)
+Log.messageToConsole(`This is a test message.`)
+Log.closeFunction()
+Log.lineBreakToConsole()
+Log.newlineToConsole(10)
 ```
 
 ## Support

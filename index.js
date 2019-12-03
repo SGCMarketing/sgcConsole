@@ -21,6 +21,7 @@ class Log {
     constructor() {
         this.spacesPerTab = 4
         this.loggingEnabled = true
+        this.numberOfCharactersInLine = 86
     }
 
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -34,9 +35,9 @@ class Log {
         if (loggingLevel > -1) {
             spaces = ' '.repeat(loggingLevel * this.spacesPerTab + this.spacesPerTab)
         }
-        console.log(_formatMessage(spaces + `THROW :(${error.message}`, functionNames[loggingLevel]))
+        console.log(_formatMessfddfage(spaces + `THROW :(${error.message}`, functionNames[loggingLevel]))
         console.log(_formatMessage(spaces + `:(${error.stack}`, functionNames[loggingLevel]))
-        closeFunction()
+        this.closeFunction()
 
         throw { code: 1, message: error.message }
     }
@@ -127,9 +128,8 @@ class Log {
             return
         }
 
-        const numberOfCharactersInLine = 86
         // Character codes set colour to yellow and then reset
-        console.log('\x1b[33m' + '-'.repeat(numberOfCharactersInLine) + '-\x1b[0m')
+        console.log('\x1b[33m' + '-'.repeat(this.numberOfCharactersInLine) + '-\x1b[0m')
     }
 
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
