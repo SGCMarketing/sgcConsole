@@ -39,6 +39,10 @@ This produces the following output:
 
 ![Example 1](https://github.com/SGCMarketing/sgcConsole/raw/master/screenshots/example1.png 'Example 1')
 
+## Turning logging on/off
+
+sgcConsole takes advantage of the environment variable `LOGGING_ENABLED` to determine if output should be made to the console. In order for any logging to occur, this environment variable must be present and set to `true`.
+
 ## Sub-functions
 
 Functions can be cascaded by simply opening a new function before closing the previous function.
