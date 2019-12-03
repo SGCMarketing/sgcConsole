@@ -18,10 +18,10 @@ global.functionNames = []
 var lastFunctionName = ''
 
 class Log {
-    constructor(loggingEnabled) {
+    constructor() {
         this.spacesPerTab = 4
         this.numberOfCharactersInLine = 86
-        this.loggingEnabled = loggingEnabled ? loggingEnabled : false
+        this.loggingEnabled = false
     }
 
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
