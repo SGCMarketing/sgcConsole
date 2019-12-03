@@ -19,12 +19,14 @@ npm install sgcconsole
 
 ## Using sgcCode
 
-Once installed, sgcConsole needs to be included within your project as follows:
+Once installed, sgcConsole needs to be included within your project as follows. Note that logging is disabled on creation and so the `.loggingEnabled` option needs to be set immediately following the first reference.
 
 ```js
-const sgcConsole = require('sgcconsole')
-const Log = new sgcConsole()
+const Log = require('sgcconsole')
+Log.loggingEnabled = true
 ```
+
+sgcConsole is implemented using a singleton model, meaning that the object is shared across a project - requiring sgcConsole in subject files will not therefore need the `.loggingEnabled` option setting.
 
 Typically, you will want to start with opening a 'function' and then issue one or more messages before closing it:
 
