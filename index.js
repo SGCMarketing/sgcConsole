@@ -39,7 +39,7 @@ class Log {
         console.log(_formatMessage(spaces + `:(${error.stack}`, functionNames[loggingLevel]))
         this.closeFunction()
 
-        throw { code: 1, message: error.message }
+        throw new Error(error.message)
     }
 
     // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
